@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pizza } from './pizza';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pizzaparty';
+  title = 'Pizza Party';
+  // maSuperPizza est "typée" avec la classe Pizza
+  maSuperPizza: Pizza = {
+    id: 1,
+    name: '4 fromages',
+    price: 12,
+    image: '4-fromages.jpg'
+  };
 }
