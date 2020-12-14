@@ -1,0 +1,26 @@
+<h2>La liste des pizzas</h2>
+<ul>
+    <li *ngFor="let pizza of mesPizzas" (click)="onSelect(pizza)">
+        {{ pizza.name }}
+    </li>
+</ul>
+
+<!-- La div apparait seulement si maSuperPizza est sélectionnée -->
+<div *ngIf="maSuperPizza">
+    <h2>{{ maSuperPizza.name }}</h2>
+    <p>ID: {{ maSuperPizza.id }}</p>
+    <p>Prix: {{ maSuperPizza.price }}</p>
+    <!-- <img src="assets/img/pizzas/{{ maSuperPizza.image }}" alt="{{ maSuperPizza.name }}"> -->
+    <img [src]="'assets/img/pizzas/' + maSuperPizza.image"
+         [alt]="maSuperPizza.name">
+
+     <!-- ngModel permet de synchroniser la valeur du champ input avec la propriété name de
+          l'objet maSuperPizza -->
+     <input [(ngModel)]="maSuperPizza.name">
+
+     <!-- Méthode sans le module FormsModule -->
+     <!-- #pizzaName permet de sélectionner le input dans une variable pizzaName (document.getElementById) -->
+     <!-- [value] permet de récupèrer le résultat d'une variable (en JS) -->
+     <!-- (keyup) permet d'écouter un événément (en JS) -->
+     <!-- <input #pizzaName [value]="maSuperPizza.name" (keyup)="maSuperPizza.name = pizzaName.value"> -->
+</div>
