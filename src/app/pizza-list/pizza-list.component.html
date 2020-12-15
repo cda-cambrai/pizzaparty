@@ -1,9 +1,14 @@
 <h2>La liste des pizzas</h2>
-<ul>
-    <li *ngFor="let pizza of mesPizzas" (click)="onSelect(pizza)">
-        {{ pizza.name }}
-    </li>
-</ul>
+<div class="row">
+    <div class="col-lg-3" *ngFor="let pizza of mesPizzas" (click)="onSelect(pizza)">
+        <div class="card">
+            <img class="card-img-top" [src]="'assets/img/pizzas/' + pizza.image" [alt]="pizza.name">
+            <div class="card-body">
+                {{ pizza.name }}
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- La div apparait seulement si maSuperPizza est sélectionnée -->
 <div *ngIf="maSuperPizza">
