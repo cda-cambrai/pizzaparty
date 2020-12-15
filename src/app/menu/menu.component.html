@@ -6,11 +6,11 @@
 
     <div [class.show]="isCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="/">Home</a>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/pizzas">Nos pizzas</a>
+                <a class="nav-link" routerLink="/pizzas" routerLinkActive="active">Nos pizzas</a>
             </li>
             <li ngbDropdown class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="dropdownBasic1" role="button" ngbDropdownToggle>Dropdown</a>
