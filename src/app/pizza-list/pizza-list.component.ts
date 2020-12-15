@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from '../pizza';
+import { PizzaService } from '../services/pizza.service';
 
 @Component({
   selector: 'app-pizza-list',
@@ -11,12 +12,7 @@ export class PizzaListComponent implements OnInit {
   maSuperPizza: Pizza;
 
   // On peut typer un tableau...
-  mesPizzas: Pizza[] = [
-    { id: 1, name: 'Reine', price: 12, image: 'reine.jpg' },
-    { id: 2, name: '4 fromages', price: 13, image: '4-fromages.jpg' },
-    { id: 3, name: 'Orientale', price: 11, image: 'orientale.jpg' },
-    { id: 4, name: 'Cannibale', price: 9, image: 'cannibale.jpg' },
-  ];
+  mesPizzas: Pizza[];
 
   // On peut créer une fonction / une méthode
   onSelect(pizza: Pizza) {
@@ -26,9 +22,21 @@ export class PizzaListComponent implements OnInit {
     this.maSuperPizza = pizza;
   }
 
-  constructor() { }
+  /**
+   * Ce qu'on fait ici s'appelle l'injection de dépendance
+   * On récupère l'instance d'une classe (PizzaService) dont
+   * dépend notre PizzaListComponent
+   */
+  constructor(private pizzaService: PizzaService) { }
 
+  /**
+   * Ce code s'exécute quand le composant est initialisé
+   * (dans le DOM) donc après le constructor
+   */
   ngOnInit(): void {
+    console.log(this.pizzaService.getPizzas());
+    // Je récupère les pizzas du service
+    this.mesPizzas = this.pizzaService.getPizzas();
   }
 
 }

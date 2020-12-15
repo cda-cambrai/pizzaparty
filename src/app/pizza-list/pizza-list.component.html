@@ -1,17 +1,17 @@
 <!-- La div apparait seulement si maSuperPizza est sélectionnée -->
-<div *ngIf="maSuperPizza" class="row">
+<div *ngIf="maSuperPizza" class="row text-white">
     <div class="col-lg-3">
         <!-- <img src="assets/img/pizzas/{{ maSuperPizza.image }}" alt="{{ maSuperPizza.name }}"> -->
         <img [src]="'assets/img/pizzas/' + maSuperPizza.image"
-            [alt]="maSuperPizza.name" class="img-fluid">
+            [alt]="maSuperPizza.name" class="img-fluid rounded-lg">
     </div>
-    <div class="col-lg-9">
+    <div class="col-lg-3">
         <h2>{{ maSuperPizza.name }}</h2>
         <p>Prix: {{ maSuperPizza.price }}</p>
 
         <!-- ngModel permet de synchroniser la valeur du champ input avec la propriété name de
             l'objet maSuperPizza -->
-        <input [(ngModel)]="maSuperPizza.name">
+        <input [(ngModel)]="maSuperPizza.name" class="form-control">
 
         <!-- Méthode sans le module FormsModule -->
         <!-- #pizzaName permet de sélectionner le input dans une variable pizzaName (document.getElementById) -->
@@ -21,10 +21,10 @@
     </div>
 </div>
 
-<h2 class="my-4">La liste des pizzas</h2>
+<h2 class="my-4 text-white">La liste des pizzas</h2>
 <div class="row">
-    <div class="col-lg-3" *ngFor="let pizza of mesPizzas" (click)="onSelect(pizza)">
-        <div class="card" [class.selected]="pizza === maSuperPizza">
+    <div class="col-sm-6 col-lg-3" *ngFor="let pizza of mesPizzas" (click)="onSelect(pizza)">
+        <div class="card shadow mb-4" [class.selected]="pizza === maSuperPizza">
             <img class="card-img-top" [src]="'assets/img/pizzas/' + pizza.image" [alt]="pizza.name">
             <div class="card-body">
                 {{ pizza.name }}
