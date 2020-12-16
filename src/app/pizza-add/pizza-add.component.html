@@ -21,7 +21,16 @@
                     <div *ngIf="errorImage.dirty && errorImage.invalid" class="text-danger">L'image est obligatoire.</div>
 
                     <div class="text-right">
-                        <button class="btn btn-primary" [disabled]="errorPizza.invalid">Créer la pizza</button>
+                        <button class="btn btn-primary" [disabled]="errorPizza.invalid || loading">
+                            <span *ngIf="!loading">
+                                Créer la pizza
+                            </span>
+
+                            <span *ngIf="loading">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Cuisson...
+                            </span>
+                        </button>
                     </div>
                 </form>
             </div>

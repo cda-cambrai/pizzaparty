@@ -13,7 +13,7 @@ export class PizzaListComponent implements OnInit {
   maSuperPizza: Pizza;
 
   // On peut typer un tableau...
-  mesPizzas: Pizza[];
+  mesPizzas: Pizza[] = [];
 
   // On peut créer une fonction / une méthode
   onSelect(pizza: Pizza) {
@@ -49,7 +49,7 @@ export class PizzaListComponent implements OnInit {
     // On dit ensuite que mesPizzas correspond à ce tableau
     // La syntaxe avec => est appelée arrow function, c'est un raccourci et cela permet de conserver
     // le this (qui est donc PizzaListComponent)
-    this.pizzaService.getPizzas().then(pizzas => {
+    this.pizzaService.getPizzasSlowly().then(pizzas => {
       this.mesPizzas = pizzas;
     });
 

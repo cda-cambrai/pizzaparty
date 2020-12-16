@@ -22,6 +22,13 @@
 </div>
 
 <h2 class="my-4 text-white">La liste des pizzas</h2>
+
+<div class="text-center" *ngIf="!mesPizzas || mesPizzas.length === 0">
+    <div class="spinner-border text-white" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-sm-6 col-lg-3" *ngFor="let pizza of mesPizzas" (click)="onSelect(pizza)">
         <div class="card shadow mb-4" [class.selected]="pizza === maSuperPizza">

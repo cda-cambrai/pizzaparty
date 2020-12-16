@@ -12,6 +12,7 @@ export class PizzaAddComponent implements OnInit {
   // pizza est la propriété (champ, variable)
   // Pizza est le type de la propriété
   pizza: Pizza = new Pizza(); // On prépare une instance "vide" d'une pizza (un objet)
+  loading: boolean = false;
 
   constructor(
     private pizzaService: PizzaService,
@@ -22,11 +23,15 @@ export class PizzaAddComponent implements OnInit {
   }
 
   addPizza() {
+    this.loading = true; // On lance le chargement
+  
     // On va appeller le service pour créer la pizza sur l'API
-    this.pizzaService.createPizza(this.pizza).then(pizza => {
+    this.pizzaService.createPizzaSlowly(this.pizza).then(pizza => {
       console.log(pizza);
       // Redirection vers /pizzas
       this.router.navigate(['/pizzas']);
+      // On arrête le chargement
+      this.loading = false;
     });
   }
 
