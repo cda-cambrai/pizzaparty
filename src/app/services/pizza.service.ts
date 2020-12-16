@@ -25,4 +25,14 @@ export class PizzaService {
 
     return this.http.get<Pizza[]>('http://localhost:3000/pizzas').toPromise();
   }
+
+  /**
+   * Permet de créer une Pizza sur mon API
+   */
+  createPizza(pizza: Pizza): Promise<Pizza> {
+    // On envoie la pizza à l'API, et l'API nous promet de créer cette Pizza
+    // Si c'est le cas, elle nous renvoie la pizza avec son ID
+
+    return this.http.post<Pizza>('http://localhost:3000/pizzas', pizza).toPromise();
+  }
 }

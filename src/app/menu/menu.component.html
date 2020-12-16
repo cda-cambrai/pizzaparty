@@ -11,7 +11,10 @@
                     <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/pizzas" routerLinkActive="active">Nos pizzas</a>
+                    <a class="nav-link" routerLink="/pizzas" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Nos pizzas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/pizzas/add" routerLinkActive="active">Ajouter une pizza</a>
                 </li>
                 <li ngbDropdown class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="dropdownBasic1" role="button" ngbDropdownToggle>Dropdown</a>

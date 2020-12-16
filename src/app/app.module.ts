@@ -9,13 +9,15 @@ import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { PizzaAddComponent } from './pizza-add/pizza-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PizzaListComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    PizzaAddComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot([
       // On définit toutes les routes (pages) du site
       { path: '', component: HomeComponent },
-      { path: 'pizzas', component: PizzaListComponent }
+      { path: 'pizzas', component: PizzaListComponent },
+      { path: 'pizzas/add', component: PizzaAddComponent }
     ])
   ],
   providers: [],

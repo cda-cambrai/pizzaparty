@@ -21,6 +21,8 @@ export class PizzaListComponent implements OnInit {
     // Je vais modifier la valeur de maSuperPizza
     // this représente AppComponent
     this.maSuperPizza = pizza;
+    // Remonter en haut de la fenêtre
+    window.scrollTo(0, 0);
   }
 
   /**
