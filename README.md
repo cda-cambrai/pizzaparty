@@ -24,6 +24,12 @@ Et voilà, on peut lancer le serveur (`http://localhost:4200/`) :
 ng serve
 ```
 
+N'oublions pas de lancer l'API :
+
+```
+json-server --watch db.json
+```
+
 Par la suite, s'il y a des modifications, on peut simplement faire :
 
 ```

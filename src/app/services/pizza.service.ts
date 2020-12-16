@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pizza } from '../pizza';
 
@@ -6,24 +7,22 @@ import { Pizza } from '../pizza';
 })
 export class PizzaService {
 
-  constructor() { }
+  /**
+   * Dans PizzaService, j'ai besoin du service HttpClient pour
+   * faire les requêtes sur mon API
+   */
+  constructor(private http: HttpClient) { }
 
   /**
    * Permet de récupérer les pizzas sur notre API...
+   * Nous renvoie une promesse d'un ensemble de pizzas
    */
-  getPizzas(): Pizza[] {
+  getPizzas(): Promise<Pizza[]> {
+    // Quand on fait une requête sur une API, on doit faire une promesse
+    // On nous promet de nous renvoyer une réponse (temps de latence possible...)
+    // Une promesse est un code asynchrone, c'est à dire que le code peut s'exécuter
+    // plus tard...
 
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then(function (response) {
-        // Le code qui est ici va s'exécuter plus tard...
-        console.log(response);
-      });
-
-    return [
-      { id: 1, name: 'Reine', price: 12, image: 'reine.jpg' },
-      { id: 2, name: '4 fromages', price: 13, image: '4-fromages.jpg' },
-      { id: 3, name: 'Orientale', price: 11, image: 'orientale.jpg' },
-      { id: 4, name: 'Cannibale', price: 9, image: 'cannibale.jpg' },
-    ];
+    return this.http.get<Pizza[]>('http://localhost:3000/pizzas').toPromise();
   }
 }

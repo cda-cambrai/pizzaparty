@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from '../pizza';
 import { PizzaService } from '../services/pizza.service';
+import { Game } from '../game';
 
 @Component({
   selector: 'app-pizza-list',
@@ -23,7 +24,7 @@ export class PizzaListComponent implements OnInit {
   }
 
   /**
-   * Ce qu'on fait ici s'appelle l'injection de dépendance
+   * Ce qu'on fait ici s'appelle l'injection de dépendances
    * On récupère l'instance d'une classe (PizzaService) dont
    * dépend notre PizzaListComponent
    */
@@ -34,9 +35,28 @@ export class PizzaListComponent implements OnInit {
    * (dans le DOM) donc après le constructor
    */
   ngOnInit(): void {
-    console.log(this.pizzaService.getPizzas());
-    // Je récupère les pizzas du service
-    this.mesPizzas = this.pizzaService.getPizzas();
+    /*let self = this;
+    this.pizzaService.getPizzas().then(function (pizzas) {
+      console.log(pizzas);
+      self.mesPizzas = pizzas;
+      console.log(self);
+    });*/
+
+    // On appelle la méthode getPizzas du service pizzaService qui nous renvoie une promesse
+    // Suite à la résolution de la promesse (then), on a un tableau de pizzas
+    // On dit ensuite que mesPizzas correspond à ce tableau
+    // La syntaxe avec => est appelée arrow function, c'est un raccourci et cela permet de conserver
+    // le this (qui est donc PizzaListComponent)
+    this.pizzaService.getPizzas().then(pizzas => {
+      this.mesPizzas = pizzas;
+    });
+
+    // On peut créer des instances différentes à partir d'une classe
+    // Chaque instance a ses propres données
+    var game1 = new Game('Cyberpunk 2077', 'PC');
+    var game2 = new Game('GTA V', 'PC');
+    console.log(game1);
+    console.log(game2.getInfos());
   }
 
 }
