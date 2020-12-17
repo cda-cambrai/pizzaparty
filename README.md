@@ -27,6 +27,7 @@ ng serve
 N'oublions pas de lancer l'API :
 
 ```
+npm install -g json-server
 json-server --watch db.json
 ```
 
